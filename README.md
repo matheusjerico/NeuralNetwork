@@ -396,9 +396,10 @@ y_pred = model.predict_classes(X_test)
 
 ### 7. Métricas
 
+#### 7.1. Matriz de Confusão
 ![png](imagens/output_65_0.png)
 
-
+#### 7.2. Precision, Recall e F1-Score
                   precision    recall  f1-score   support
     
                0       0.75      0.75      0.75        20
@@ -407,7 +408,8 @@ y_pred = model.predict_classes(X_test)
         accuracy                           0.78        45
        macro avg       0.78      0.78      0.78        45
     weighted avg       0.78      0.78      0.78        45
-    
+
+#### 7.3. Accuracy
 
     Accuracy: 0.7777777777777778
 
