@@ -82,18 +82,6 @@ X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 0.30, stra
 X_test, X_val, y_test, y_val = train_test_split(X_test, y_test, test_size = 0.5, stratify= y_test,random_state = 43)
 ```
 
-
-```python
-print(f"Quantidade de registros e dimensão X: {X.shape}")
-print(f"Quantidade de registros e dimensão y: {y.shape}\n")
-print(f"Quantidade de registros e dimensão X_train: {X_train.shape}")
-print(f"Quantidade de registros e dimensão y_train: {y_train.shape}\n")
-print(f"Quantidade de registros e dimensão X_test: {X_test.shape}")
-print(f"Quantidade de registros e dimensão y_test: {y_test.shape}\n")
-print(f"Quantidade de registros e dimensão X_val: {X_val.shape}")
-print(f"Quantidade de registros e dimensão y_val: {y_val.shape}\n")
-```
-
     Quantidade de registros e dimensão X: (303, 3)
     Quantidade de registros e dimensão y: (303,)
     
@@ -184,30 +172,7 @@ model.summary()
 
 ### 6. Gráfico de evolução das métricas de treinamento e validação
 
-```python
-N = 50
-plt.figure(figsize = (10,5))
-plt.plot(np.arange(0, N), H.history["loss"], label="Erro de Treinamento")
-plt.plot(np.arange(0, N), H.history["val_loss"], label="Erro de Validação")
-plt.title("Evoluções dos erros de treinamento e de validação", size=15)
-plt.xlabel("Epoch #")
-plt.ylabel("Erro")
-plt.legend(loc="best", prop={"size": 10})
-```
-
 ![png](imagens/output_32_1.png)
-
-
-```python
-N = 50
-plt.figure(figsize = (10,5))
-plt.plot(np.arange(0, N), H.history["binary_accuracy"], label="Acurácia de Treinamento")
-plt.plot(np.arange(0, N), H.history["val_binary_accuracy"], label="Acurácia de Validação")
-plt.title("Evoluções da Acurácia de treinamento e de validação", size=15)
-plt.xlabel("Epoch #")
-plt.ylabel("Acurácia")
-plt.legend(loc="best", prop={"size": 10})
-```
 
 ![png](imagens/output_33_1.png)
 
@@ -221,47 +186,17 @@ y_pred = model.predict_classes(X_test)
 
 #### 8.1. Matriz de Confusão
 
-
-```python
-LABELS = ["Positivo", "Negativo"]
-conf_matrix = confusion_matrix(y_test, y_pred)
-
-plt.figure(figsize=(6, 6))
-sns.heatmap(conf_matrix, xticklabels=LABELS, yticklabels=LABELS, annot=True, fmt="d");
-plt.title("Matriz de confusão")
-plt.ylabel('Classe')
-plt.xlabel('Predição')
-plt.show()
-```
-
-
 ![png](imagens/output_36_0.png)
 
 
 #### 8.2. Precision & Accuracy
 
-
-```python
-print(f'Precision: {precision_score(y_test, y_pred)}')
-```
-
     Precision: 0.6666666666666666
-
-
-
-```python
-print(f'Accuracy: {accuracy_score(y_test, y_pred)}')
-```
 
     Accuracy: 0.5777777777777777
 
 
 #### 8.3. ROC AUC
-
-
-```python
-print(f'ROC AUC Score: {roc_auc_score(y_test, y_pred)}')
-```
 
     ROC AUC Score: 0.59
 
@@ -269,20 +204,10 @@ print(f'ROC AUC Score: {roc_auc_score(y_test, y_pred)}')
 
 #### 8.4. F1-Score
 
-
-```python
-print(f'Accuracy: {f1_score(y_test, y_pred)}') 
-```
-
-    Accuracy: 0.5581395348837209
+    F1-Score: 0.5581395348837209
 
 
 #### 8.5. Tudo junto & Misturado (Precision, Recall e F1-score)
-
-
-```python
-print(classification_report(y_test, y_pred))
-```
 
                   precision    recall  f1-score   support
     
@@ -464,57 +389,15 @@ y_pred = model.predict_classes(X_test)
 
 ### 6. Gráfico de evolução de métricas de treinamento e validação
 
-
-```python
-N = 50
-plt.figure(figsize = (10,5))
-plt.plot(np.arange(0, N), H.history["loss"], label="Erro de Treinamento")
-plt.plot(np.arange(0, N), H.history["val_loss"], label="Erro de Validação")
-plt.title("Evoluções dos erros de treinamento e de validação", size=15)
-plt.xlabel("Epoch #")
-plt.ylabel("Erro")
-plt.legend(loc="best", prop={"size": 10})
-```
-
 ![png](imagens/output_62_1.png)
-
-```python
-N = 50
-plt.figure(figsize = (10,5))
-plt.plot(np.arange(0, N), H.history["binary_accuracy"], label="Acurácia de Treinamento")
-plt.plot(np.arange(0, N), H.history["val_binary_accuracy"], label="Acurácia de Validação")
-plt.title("Evoluções da Acurácia de treinamento e de validação", size=15)
-plt.xlabel("Epoch #")
-plt.ylabel("Acurácia")
-plt.legend(loc="best", prop={"size": 10})
-```
 
 ![png](imagens/output_63_1.png)
 
 
 ### 7. Métricas
 
-
-```python
-LABELS = ["Positivo", "Negativo"]
-conf_matrix = confusion_matrix(y_test, y_pred)
-
-plt.figure(figsize=(6, 6))
-sns.heatmap(conf_matrix, xticklabels=LABELS, yticklabels=LABELS, annot=True, fmt="d");
-plt.title("Matriz de confusão")
-plt.ylabel('Classe')
-plt.xlabel('Predição')
-plt.show()
-```
-
-
 ![png](imagens/output_65_0.png)
 
-
-
-```python
-print(classification_report(y_test, y_pred))
-```
 
                   precision    recall  f1-score   support
     
@@ -525,12 +408,6 @@ print(classification_report(y_test, y_pred))
        macro avg       0.78      0.78      0.78        45
     weighted avg       0.78      0.78      0.78        45
     
-
-
-
-```python
-print(f'Accuracy: {accuracy_score(y_test, y_pred)}')
-```
 
     Accuracy: 0.7777777777777778
 
